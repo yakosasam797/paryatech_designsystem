@@ -23,6 +23,43 @@ export function FoundationHeader({ eyebrow, title, description, meta }: HeaderPr
   );
 }
 
+const visualLanguagePillars = [
+  { index: '01', name: 'Color', contract: 'Reference palette → semantic roles → component states', detail: 'Warm neutrals establish the operational canvas; teal owns interaction; pink is a controlled identity accent; status colors carry meaning only.' },
+  { index: '02', name: 'Typography', contract: 'Onest identity + Public Sans product language', detail: 'A restrained hierarchy separates page, section, card, UI, metadata, and tabular data without introducing a third font.' },
+  { index: '03', name: 'Spacing', contract: 'Dense internals + calm page rhythm', detail: '2–10px is component anatomy, 12–24px is component composition, and 32–80px establishes page structure.' },
+  { index: '04', name: 'Sizing', contract: '32 / 34 / 40 / 44 control ladder', detail: 'Optical icon sizes, control height, row density, avatar scale, and accessible hit areas are coordinated instead of independently resized.' },
+  { index: '05', name: 'Corner radius', contract: '6 → 8 → 10 → 12 → 16 → 20', detail: 'Shape communicates function: selection, dense control, field, card, panel, then overlay. Full-round is reserved for identity and status.' },
+];
+
+export function VisualLanguageFoundation() {
+  return (
+    <main className="ds-foundation-page">
+      <FoundationHeader eyebrow="FOUNDATIONS · SYSTEM" title="Visual language" description="The brand is not a palette applied after layout. It is the repeated relationship between color, type, spacing, size and corner geometry—supported by border, focus, elevation, icon and responsive rules." meta="Figma variables → versioned tokens → React components → product screens" />
+      <section className="ds-language-signature" aria-label="Paryatech visual signature">
+        <div className="ds-language-signature__identity"><span className="type-overline">BOOKING READINESS</span><strong className="type-heading-section">XYZ Family · Dubai</strong><p className="type-body-sm">Documents, suppliers and payments aligned for departure.</p></div>
+        <div className="ds-language-signature__metric"><span className="type-overline">TO COLLECT</span><strong className="type-data-md">₹ 1,20,000</strong><span className="type-caption">Due 18 Sep</span></div>
+        <button className="ds-language-signature__action" type="button">Review booking</button>
+      </section>
+      <section className="ds-language-pipeline" aria-label="Token architecture">
+        <article><span>1</span><div><strong>Reference</strong><p>Raw, stable source values. Never consumed by product components.</p></div></article>
+        <i aria-hidden="true" />
+        <article><span>2</span><div><strong>Semantic</strong><p>Intent-based roles such as surface, text, action, compact control, and card.</p></div></article>
+        <i aria-hidden="true" />
+        <article><span>3</span><div><strong>Component</strong><p>Documented APIs that consume roles consistently in every state and mode.</p></div></article>
+      </section>
+      <div className="ds-language-grid">{visualLanguagePillars.map((pillar) => <article key={pillar.name}><span className="type-overline">{pillar.index}</span><h2 className="type-heading-card">{pillar.name}</h2><strong className="type-label-sm">{pillar.contract}</strong><p className="type-body-sm">{pillar.detail}</p></article>)}</div>
+      <SectionTitle title="Supporting identity decisions" meta="Required, not decorative" />
+      <Rules items={[
+        ['Border', 'One-pixel structure is the default. Use stronger widths only for selected state, compact selection controls, focus, and notification separation.'],
+        ['Focus', 'A two-pixel keyboard ring with a two-pixel gap provides a consistent interaction signature across controls and themes.'],
+        ['Elevation', 'Depth explains raised, floating, overlay, or overflow relationships. It does not decorate ordinary cards.'],
+        ['Icon', 'Lucide 24px masters scale through approved 12, 16, 20, and 24px optical roles and always inherit semantic color.'],
+        ['Responsive', 'Density changes through layout roles and component behavior—not by proportionally shrinking the entire interface.'],
+      ]} />
+    </main>
+  );
+}
+
 function TokenTable({ tokens, sample }: { tokens: NumericFoundationToken[]; sample: 'space' | 'radius' | 'size' | 'focus' }) {
   return (
     <div className="ds-token-table-wrap">
@@ -95,7 +132,7 @@ export function SpacingFoundation() {
 }
 
 export function RadiusFoundation() {
-  return <main className="ds-foundation-page"><FoundationHeader eyebrow="FOUNDATIONS · GEOMETRY" title="Radius" description="A semantic shape hierarchy that avoids indiscriminate pills and excessive rounding." meta={`${radiusTokens.length} published tokens · scale, component and focus roles`} /><TokenTable tokens={radiusTokens} sample="radius" /><Rules items={[["Meaning", "Use full round only for status, avatar and truly circular controls."],["Components", "Controls use 8–10px; cards use 12px; panels use 16px; modals and drawers use 20px."],["Focus", "Outer focus radii are intentionally two pixels larger than component geometry."]]} /></main>;
+  return <main className="ds-foundation-page"><FoundationHeader eyebrow="FOUNDATIONS · GEOMETRY" title="Corner radius" description="A semantic shape hierarchy that makes function visible and avoids indiscriminate pills or inflated card rounding." meta={`${radiusTokens.length} published tokens · reference scale → component roles → focus geometry`} /><div className="ds-radius-language"><span style={{ borderRadius: 'var(--radius-component-checkbox)' }}>Selection<br /><b>6px</b></span><span style={{ borderRadius: 'var(--radius-component-compact-control)' }}>Dense control<br /><b>8px</b></span><span style={{ borderRadius: 'var(--radius-component-field-and-button)' }}>Field / button<br /><b>10px</b></span><span style={{ borderRadius: 'var(--radius-component-card)' }}>Card<br /><b>12px</b></span><span style={{ borderRadius: 'var(--radius-component-panel-and-table)' }}>Panel / table<br /><b>16px</b></span><span style={{ borderRadius: 'var(--radius-component-modal-and-drawer)' }}>Modal / drawer<br /><b>20px</b></span></div><TokenTable tokens={radiusTokens} sample="radius" /><Rules items={[["Meaning", "Use full round only for status, avatar and truly circular controls."],["Progression", "Radius increases with container scale and layer responsibility; it is not selected by visual preference."],["Focus", "Outer focus radii are intentionally two pixels larger than component geometry."],["Prohibited", "Do not convert buttons, tags, cards, or table actions into capsules unless their semantic role explicitly requires full round."]]} /></main>;
 }
 
 export function ElevationFoundation() {
@@ -112,7 +149,7 @@ export function SizingFoundation() {
   const controls = sizingTokens.filter((token) => token.name.startsWith('Control/') || token.name.startsWith('Accessibility/'));
   const icons = sizingTokens.filter((token) => token.name.startsWith('Icon/'));
   const rest = sizingTokens.filter((token) => !controls.includes(token) && !icons.includes(token));
-  return <main className="ds-foundation-page"><FoundationHeader eyebrow="FOUNDATIONS · GEOMETRY" title="Sizing" description="Role tokens for control heights, icon optical size, tables, status, avatars and navigation." meta={`${sizingTokens.length} published tokens · component roles over Core sizing`} /><SectionTitle title="Control heights" meta="32 · 34 · 40 · 44" /><TokenTable tokens={controls} sample="size" /><SectionTitle title="Icon sizing" meta="12 · 16 · 20 · 24" /><TokenTable tokens={icons} sample="size" /><SectionTitle title="Component sizing" meta={`${rest.length} roles`} /><TokenTable tokens={rest} sample="size" /></main>;
+  return <main className="ds-foundation-page"><FoundationHeader eyebrow="FOUNDATIONS · GEOMETRY" title="Sizing & density" description="Role tokens coordinate control heights, icon optics, hit targets, avatars, navigation and table density. Visible geometry and accessible target size are related but not always identical." meta={`${sizingTokens.length} published tokens · component roles over Core sizing`} /><div className="ds-control-ladder"><span><i style={{ height: 'var(--size-control-xs)' }} />32px<strong>XS utility</strong></span><span><i style={{ height: 'var(--size-control-compact)' }} />34px<strong>Compact row</strong></span><span><i style={{ height: 'var(--size-control-standard)' }} />40px<strong>Standard</strong></span><span><i style={{ height: 'var(--size-control-large)' }} />44px<strong>Large / target</strong></span></div><SectionTitle title="Control heights" meta="32 · 34 · 40 · 44" /><TokenTable tokens={controls} sample="size" /><SectionTitle title="Icon sizing" meta="12 · 16 · 20 · 24" /><TokenTable tokens={icons} sample="size" /><SectionTitle title="Component sizing" meta={`${rest.length} roles`} /><TokenTable tokens={rest} sample="size" /><Rules items={[["Optical pairing", "Use 16px icons inside standard fields and most buttons; reserve 20px for prominent utilities and navigation."],["Hit targets", "A visible 20px checkbox still lives inside a minimum 44px interactive target."],["Density", "Use 56px table rows for compact operations and 64px where values need a second line; do not invent intermediate row heights."]]} /></main>;
 }
 
 export function ResponsiveFoundation() {

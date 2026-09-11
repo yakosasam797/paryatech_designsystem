@@ -34,9 +34,9 @@ const preview: Preview = {
       storySort: {
         order: [
           'Foundations',
-          ['Color', 'Typography', 'Spacing', 'Radius', 'Elevation', 'Sizing', 'Responsive', 'Focus'],
+          ['Visual language', 'Color', 'Typography', 'Spacing', 'Sizing & density', 'Corner radius', 'Elevation', 'Responsive', 'Focus'],
           'Components',
-          ['Typography', 'Icon', 'Actions', 'Forms', 'Selection', 'Feedback'],
+          ['Typography', 'Icon', 'Actions', 'Forms', 'Selection', 'Feedback', 'Identity', 'Navigation'],
         ],
       },
     },

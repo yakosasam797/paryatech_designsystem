@@ -2,7 +2,7 @@
 
 The production design-system repository for Paryatech. Figma defines the design intent; versioned tokens and React components in this repository are the implementation contract used by product teams and coding agents.
 
-The repository now covers the first production foundation and control layer in Storybook 10.6 for React and TypeScript.
+The repository covers the production visual-language foundation, control layer, identity primitives and global navigation layer in Storybook 10.6 for React and TypeScript.
 
 ## Run locally
 
@@ -36,10 +36,10 @@ Figma Core variables -> tokens/core.color.json
 - `scripts/build-color-tokens.mjs` validates aliases and generates `src/styles/tokens/colors.css`.
 - `src/tokens/colors.ts` provides typed token metadata for documentation and tooling.
 - `src/foundations/color` contains the Storybook foundation stories.
-- `src/foundations/system` documents typography, spacing, radius, sizing, elevation, responsive behavior and focus.
+- `src/foundations/system` documents the complete visual-language model: typography, spacing, sizing and density, corner radius, border, elevation, responsive behavior and focus.
 - `src/components` contains accessible React primitives and their stories.
 
-Implemented components: Heading, Text, Icon, Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Badge, Tag, Status and Tooltip. See [implementation status](docs/implementation-status.md) for Figma provenance and derived-component boundaries.
+Implemented components: Heading, Text, Icon, Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Badge, Tag, Status, Tooltip, Avatar, Breadcrumbs, Tabs, Search Field, Menu, App Selector and Top Bar. The Sidebar is intentionally excluded from this release. See [implementation status](docs/implementation-status.md) for Figma provenance and derived-component boundaries, and [foundation model](docs/foundation-model.md) for the governing architecture.
 
 After changing a token source file, regenerate and validate the output:
 

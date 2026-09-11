@@ -4,6 +4,26 @@
 .ds-foundation-header > .type-overline { color: var(--color-text-tertiary); }
 .ds-foundation-header > .type-body-md { max-width: 820px; color: var(--color-text-secondary); }
 .ds-foundation-header > .type-caption { color: var(--color-text-tertiary); }
+.ds-language-signature { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: var(--space-32); max-width: 1296px; margin: 0 auto var(--space-24); padding: var(--space-24); border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-panel-and-table); background: var(--color-surface-default); box-shadow: var(--elevation-raised); }
+.ds-language-signature__identity { display: grid; gap: var(--space-04); }
+.ds-language-signature__identity strong, .ds-language-signature__identity p { margin: 0; }
+.ds-language-signature__identity > span, .ds-language-signature__identity p, .ds-language-signature__metric span { color: var(--color-text-tertiary); }
+.ds-language-signature__metric { display: grid; min-width: 140px; gap: var(--space-04); padding-left: var(--space-24); border-left: var(--border-default) solid var(--color-border-subtle); }
+.ds-language-signature__metric strong { color: var(--color-text-primary); }
+.ds-language-signature__action { height: var(--size-control-standard); padding: 0 var(--space-16); border: 0; border-radius: var(--radius-component-field-and-button); background: var(--color-action-primary-background); color: var(--color-action-primary-foreground); font: 500 14px/20px var(--type-family-ui); cursor: pointer; }
+.ds-language-signature__action:hover { background: var(--color-action-primary-background-hover); }
+.ds-language-signature__action:focus-visible { outline: var(--focus-ring-width) solid var(--color-border-focused); outline-offset: var(--focus-ring-offset); }
+.ds-language-pipeline { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: var(--space-16); max-width: 1296px; margin: 0 auto var(--space-24); }
+.ds-language-pipeline article { display: flex; align-items: flex-start; gap: var(--space-12); min-height: 92px; padding: var(--space-16); border: var(--border-default) solid var(--color-border-subtle); border-radius: var(--radius-component-card); background: var(--color-surface-subtle); }
+.ds-language-pipeline article > span { display: inline-grid; flex: none; place-items: center; width: 24px; height: 24px; border-radius: var(--radius-component-avatar); background: var(--color-surface-selected); color: var(--color-text-link); font: 500 12px/16px var(--type-family-data); }
+.ds-language-pipeline strong { font: 600 14.5px/20px var(--type-family-heading); }
+.ds-language-pipeline p { margin: var(--space-04) 0 0; color: var(--color-text-secondary); font: 400 12.5px/18px var(--type-family-ui); }
+.ds-language-pipeline > i { width: 24px; height: var(--border-default); background: var(--color-border-strong); }
+.ds-language-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-16); max-width: 1296px; margin: 0 auto var(--space-40); }
+.ds-language-grid article { min-height: 220px; padding: var(--space-20); border-top: 3px solid var(--color-border-interactive); border-radius: 0 0 var(--radius-component-card) var(--radius-component-card); background: var(--color-surface-default); }
+.ds-language-grid h2 { margin: var(--space-16) 0 var(--space-08); }
+.ds-language-grid strong { display: block; color: var(--color-text-primary); }
+.ds-language-grid p { margin: var(--space-12) 0 0; color: var(--color-text-secondary); }
 .ds-token-table-wrap, .ds-type-table-wrap { max-width: 1296px; margin: 0 auto 32px; overflow-x: auto; border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-default); }
 .ds-token-table { width: 100%; min-width: 1060px; border-collapse: collapse; text-align: left; }
 .ds-token-table th, .ds-token-table td { padding: 13px 16px; border-top: var(--border-default) solid var(--color-border-subtle); color: var(--color-text-secondary); font-family: var(--type-family-ui); font-size: 11px; line-height: 18px; vertical-align: middle; }
@@ -15,6 +35,13 @@
 .ds-linear-sample { display: block; max-width: 100px; border-radius: 4px; background: var(--color-action-primary-background); }
 .ds-linear-sample--size { max-width: 72px; max-height: 72px; background: var(--color-surface-selected); border: var(--border-default) solid var(--color-border-interactive); }
 .ds-radius-sample { display: block; width: 64px; height: 40px; border: var(--border-selected) solid var(--color-border-interactive); background: var(--color-surface-selected); }
+.ds-radius-language { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-12); max-width: 1296px; margin: 0 auto var(--space-24); }
+.ds-radius-language span { display: grid; align-content: end; min-height: 116px; padding: var(--space-16); border: var(--border-default) solid var(--color-border-interactive); background: var(--color-surface-selected); color: var(--color-text-secondary); font: 400 12.5px/18px var(--type-family-ui); }
+.ds-radius-language b { color: var(--color-text-primary); font: 500 14px/20px var(--type-family-data); }
+.ds-control-ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: var(--space-16); max-width: 1296px; margin: 0 auto var(--space-24); padding: var(--space-24); border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-default); }
+.ds-control-ladder span { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-08); color: var(--color-text-tertiary); font: 500 12.5px/18px var(--type-family-data); }
+.ds-control-ladder i { grid-column: 1 / -1; width: 100%; border: var(--border-default) solid var(--color-border-interactive); border-radius: var(--radius-component-field-and-button); background: var(--color-surface-selected); }
+.ds-control-ladder strong { color: var(--color-text-primary); font: 500 13px/18px var(--type-family-ui); }
 .ds-focus-sample, .ds-focus-stage button { min-height: var(--size-control-standard); padding: 0 var(--space-16); border: 0; border-radius: var(--radius-component-field-and-button); background: var(--color-action-primary-background); color: var(--color-action-primary-foreground); font: 500 14px/20px var(--type-family-ui); }
 .ds-focus-sample:focus-visible, .ds-focus-stage :focus-visible { outline: var(--focus-ring-width) solid var(--color-border-focused); outline-offset: var(--focus-ring-offset); }
 .ds-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-24); max-width: 1296px; margin: 32px auto 0; }
@@ -42,4 +69,6 @@
 .ds-responsive-cards dd { margin: 0; color: var(--color-text-primary); font: 500 12.5px/18px var(--type-family-data); }
 .ds-focus-stage { display: flex; align-items: center; justify-content: center; gap: 48px; min-height: 220px; max-width: 1296px; margin: 0 auto 32px; border-radius: var(--radius-component-panel-and-table); background: var(--color-surface-subtle); }
 .ds-focus-stage input { width: 280px; height: var(--size-control-standard); padding: 0 var(--space-12); border: var(--border-default) solid var(--color-border-control); border-radius: var(--radius-component-field-and-button); background: var(--color-surface-default); color: var(--color-text-primary); font: 14px/20px var(--type-family-ui); }
-@media (max-width: 900px) { .ds-foundation-page { padding: 40px 20px 64px; } .ds-elevation-grid, .ds-responsive-cards { grid-template-columns: 1fr; } .ds-focus-stage { flex-direction: column; } }
+@media (max-width: 1100px) { .ds-language-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ds-radius-language { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .ds-foundation-page { padding: 40px 20px 64px; } .ds-elevation-grid, .ds-responsive-cards { grid-template-columns: 1fr; } .ds-focus-stage { flex-direction: column; } .ds-language-signature { grid-template-columns: 1fr; } .ds-language-signature__metric { padding: var(--space-16) 0 0; border-top: var(--border-default) solid var(--color-border-subtle); border-left: 0; } .ds-language-signature__action { width: max-content; } .ds-language-pipeline { grid-template-columns: 1fr; } .ds-language-pipeline > i { width: var(--border-default); height: var(--space-16); margin-left: 28px; } }
+@media (max-width: 640px) { .ds-language-grid, .ds-radius-language, .ds-control-ladder { grid-template-columns: 1fr; } }
