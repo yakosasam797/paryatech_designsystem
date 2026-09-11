@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paryatech.dev/schemas/color-token.schema.json",
+  "title": "Paryatech color token source",
+  "type": "object",
+  "required": ["source", "tokens"],
+  "properties": {
+    "source": { "type": "object" },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "css", "description"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "css": { "type": "string", "pattern": "^--[a-z0-9-]+$" },
+          "description": { "type": "string", "minLength": 1 },
+          "value": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$" },
+          "light": { "$ref": "#/$defs/mode" },
+          "dark": { "$ref": "#/$defs/mode" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "mode": {
+      "type": "object",
+      "required": ["value", "alias"],
+      "properties": {
+        "value": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$" },
+        "alias": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
