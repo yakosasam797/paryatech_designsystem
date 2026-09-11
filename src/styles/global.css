@@ -5,6 +5,7 @@
 @import '@fontsource/public-sans/500.css';
 @import '@fontsource/public-sans/600.css';
 @import './tokens/colors.css';
+@import './tokens/foundations.css';
 
 *,
 *::before,

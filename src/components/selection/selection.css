@@ -1,0 +1,17 @@
+.ds-choice { position: relative; display: inline-flex; align-items: center; gap: var(--space-10); min-height: var(--size-accessibility-minimum-touch-target); color: var(--color-text-primary); font: 400 14px/20px var(--type-family-ui); cursor: pointer; }
+.ds-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.ds-checkbox__visual, .ds-radio__visual { display: grid; place-items: center; width: var(--size-checkbox-size); height: var(--size-checkbox-size); border: var(--border-compact) solid var(--color-border-control); background: var(--color-surface-default); transition: background-color 100ms ease, border-color 100ms ease; }
+.ds-checkbox__visual { border-radius: var(--radius-component-checkbox); }
+.ds-radio__visual { border-radius: var(--radius-component-status); }
+.ds-radio__visual span { width: 10px; height: 10px; border-radius: inherit; background: transparent; }
+.ds-choice:hover input:not(:disabled) + .ds-checkbox__visual, .ds-choice:hover input:not(:disabled) + .ds-radio__visual { border-color: var(--color-border-focused); }
+.ds-choice input:checked + .ds-checkbox__visual, .ds-choice input:indeterminate + .ds-checkbox__visual { border-color: var(--color-action-primary-background); background: var(--color-action-primary-background); }
+.ds-checkbox__check, .ds-checkbox__mixed { position: absolute; opacity: 0; }
+.ds-choice input:checked + .ds-checkbox__visual .ds-checkbox__check { opacity: 1; }
+.ds-choice input:indeterminate + .ds-checkbox__visual .ds-checkbox__mixed { opacity: 1; }
+.ds-choice input:checked + .ds-radio__visual { border-color: var(--color-action-primary-background); }
+.ds-choice input:checked + .ds-radio__visual span { background: var(--color-action-primary-background); }
+.ds-choice input:focus-visible + .ds-checkbox__visual, .ds-choice input:focus-visible + .ds-radio__visual { outline: var(--focus-ring-width) solid var(--color-border-focused); outline-offset: var(--focus-ring-offset); }
+.ds-choice input:disabled + * { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.ds-choice:has(input:disabled) { color: var(--color-text-disabled); cursor: not-allowed; }
+.ds-checkbox__mixed { width: 10px; height: 2px; border-radius: 1px; background: var(--color-icon-inverse); }

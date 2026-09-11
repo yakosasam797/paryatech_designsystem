@@ -32,7 +32,12 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Foundations', ['Color']],
+        order: [
+          'Foundations',
+          ['Color', 'Typography', 'Spacing', 'Radius', 'Elevation', 'Sizing', 'Responsive', 'Focus'],
+          'Components',
+          ['Typography', 'Icon', 'Actions', 'Forms', 'Selection', 'Feedback'],
+        ],
       },
     },
     controls: {

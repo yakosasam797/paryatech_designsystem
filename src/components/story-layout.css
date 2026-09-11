@@ -1,0 +1,17 @@
+.ds-story { min-height: 100vh; padding: 48px; background: var(--color-surface-canvas); color: var(--color-text-primary); }
+.ds-story__header { max-width: 760px; margin-bottom: 32px; }
+.ds-story__header h1 { margin: 6px 0 8px; }
+.ds-story__header p { margin: 0; color: var(--color-text-secondary); }
+.ds-story__header > span { color: var(--color-text-tertiary); }
+.ds-story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-20); max-width: 1120px; }
+.ds-story-card { padding: var(--space-24); border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-default); }
+.ds-story-card h2 { margin: 0 0 var(--space-16); }
+.ds-story-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); }
+.ds-story-stack { display: grid; align-items: start; gap: var(--space-20); }
+.ds-state-table { display: grid; gap: var(--space-12); }
+.ds-state-table__row { display: grid; grid-template-columns: 100px 1fr; align-items: center; gap: var(--space-20); min-height: 48px; }
+.ds-state-table__row > span { color: var(--color-text-tertiary); font: 500 12.5px/18px var(--type-family-ui); }
+.ds-icon-catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-12); }
+.ds-icon-catalog article { display: flex; align-items: center; gap: var(--space-12); min-height: 52px; padding: 0 var(--space-14); border: var(--border-default) solid var(--color-border-subtle); border-radius: var(--radius-component-compact-control); background: var(--color-surface-default); }
+.ds-icon-catalog code { overflow: hidden; color: var(--color-text-secondary); font: 11px/16px var(--type-family-data); text-overflow: ellipsis; }
+@media (max-width: 640px) { .ds-story { padding: 28px 20px; } }

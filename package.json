@@ -1,15 +1,15 @@
 {
   "name": "@paryatech/design-system",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "npm run tokens:check && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "tokens:build": "node scripts/build-color-tokens.mjs",
-    "tokens:check": "node scripts/build-color-tokens.mjs --check",
+    "tokens:build": "node scripts/build-color-tokens.mjs && node scripts/build-foundation-tokens.mjs",
+    "tokens:check": "node scripts/build-color-tokens.mjs --check && node scripts/build-foundation-tokens.mjs --check",
     "prestorybook": "npm run tokens:build",
     "storybook": "storybook dev -p 6006",
     "prebuild-storybook": "npm run tokens:check",
@@ -19,26 +19,27 @@
   "dependencies": {
     "@fontsource/onest": "^5.2.8",
     "@fontsource/public-sans": "^5.2.8",
+    "lucide-react": "^1.44.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest",
     "oxlint": "^1.81.0",
+    "playwright": "latest",
+    "storybook": "^10.6.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
-    "storybook": "^10.6.0",
-    "@storybook/react-vite": "^10.6.0",
-    "@chromatic-com/storybook": "latest",
-    "@storybook/addon-vitest": "^10.6.0",
-    "@storybook/addon-a11y": "^10.6.0",
-    "@storybook/addon-docs": "^10.6.0",
-    "vitest": "latest",
-    "playwright": "latest",
-    "@vitest/browser-playwright": "latest",
-    "@vitest/coverage-v8": "latest"
+    "vitest": "latest"
   }
 }

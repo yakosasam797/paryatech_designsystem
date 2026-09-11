@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paryatech foundation tokens",
+  "type": "object",
+  "required": ["meta", "spacing", "radius", "sizing", "border", "opacityFocus", "typographyStyles", "elevation", "responsive"],
+  "properties": {
+    "meta": { "type": "object" },
+    "spacing": { "$ref": "#/$defs/numericTokens" },
+    "radius": { "$ref": "#/$defs/numericTokens" },
+    "sizing": { "$ref": "#/$defs/numericTokens" },
+    "border": { "$ref": "#/$defs/numericTokens" },
+    "opacityFocus": { "$ref": "#/$defs/numericTokens" },
+    "typographyStyles": { "type": "array", "items": { "type": "object", "required": ["name", "className", "family", "weight", "size", "lineHeight", "description"] } },
+    "elevation": { "type": "array", "items": { "type": "object", "required": ["name", "css", "value", "description"] } },
+    "responsive": { "type": "object", "required": ["modes", "tokens"] }
+  },
+  "$defs": {
+    "numericTokens": {
+      "type": "array",
+      "items": { "type": "object", "required": ["name", "css", "value", "description"] }
+    }
+  }
+}

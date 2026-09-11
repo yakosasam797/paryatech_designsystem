@@ -1,0 +1,9 @@
+.ds-icon { width: var(--icon-size); height: var(--icon-size); flex: none; }
+.ds-icon--default { color: var(--color-icon-default); }
+.ds-icon--muted { color: var(--color-icon-muted); }
+.ds-icon--interactive { color: var(--color-icon-interactive); }
+.ds-icon--inverse { color: var(--color-icon-inverse); }
+.ds-icon--success { color: var(--color-icon-success); }
+.ds-icon--warning { color: var(--color-icon-warning); }
+.ds-icon--danger { color: var(--color-icon-danger); }
+.ds-icon--info { color: var(--color-icon-info); }

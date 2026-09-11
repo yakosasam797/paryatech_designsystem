@@ -1,0 +1,45 @@
+.ds-foundation-page { min-height: 100vh; padding: 64px 72px 80px; background: var(--color-surface-canvas); color: var(--color-text-primary); }
+.ds-foundation-header { display: grid; gap: 10px; max-width: 1296px; margin: 0 auto 36px; }
+.ds-foundation-header p, .ds-foundation-header h1 { margin: 0; }
+.ds-foundation-header > .type-overline { color: var(--color-text-tertiary); }
+.ds-foundation-header > .type-body-md { max-width: 820px; color: var(--color-text-secondary); }
+.ds-foundation-header > .type-caption { color: var(--color-text-tertiary); }
+.ds-token-table-wrap, .ds-type-table-wrap { max-width: 1296px; margin: 0 auto 32px; overflow-x: auto; border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-default); }
+.ds-token-table { width: 100%; min-width: 1060px; border-collapse: collapse; text-align: left; }
+.ds-token-table th, .ds-token-table td { padding: 13px 16px; border-top: var(--border-default) solid var(--color-border-subtle); color: var(--color-text-secondary); font-family: var(--type-family-ui); font-size: 11px; line-height: 18px; vertical-align: middle; }
+.ds-token-table thead th { border-top: 0; background: var(--color-surface-table-header); color: var(--color-text-tertiary); font-size: 10px; font-weight: 600; letter-spacing: .08em; }
+.ds-token-table tbody th { width: 220px; color: var(--color-text-primary); font-weight: 600; }
+.ds-token-table td:nth-child(2) { min-width: 300px; }
+.ds-token-table code { color: var(--color-text-tertiary); font-family: var(--type-family-data); font-size: 10px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.ds-token-table strong { color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.ds-linear-sample { display: block; max-width: 100px; border-radius: 4px; background: var(--color-action-primary-background); }
+.ds-linear-sample--size { max-width: 72px; max-height: 72px; background: var(--color-surface-selected); border: var(--border-default) solid var(--color-border-interactive); }
+.ds-radius-sample { display: block; width: 64px; height: 40px; border: var(--border-selected) solid var(--color-border-interactive); background: var(--color-surface-selected); }
+.ds-focus-sample, .ds-focus-stage button { min-height: var(--size-control-standard); padding: 0 var(--space-16); border: 0; border-radius: var(--radius-component-field-and-button); background: var(--color-action-primary-background); color: var(--color-action-primary-foreground); font: 500 14px/20px var(--type-family-ui); }
+.ds-focus-sample:focus-visible, .ds-focus-stage :focus-visible { outline: var(--focus-ring-width) solid var(--color-border-focused); outline-offset: var(--focus-ring-offset); }
+.ds-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-24); max-width: 1296px; margin: 32px auto 0; }
+.ds-rules article { border-top: var(--border-selected) solid var(--color-border-interactive); padding-top: var(--space-12); }
+.ds-rules p { margin: 7px 0 0; color: var(--color-text-secondary); }
+.ds-rules span { color: var(--color-text-tertiary); }
+.ds-section-title { display: flex; align-items: baseline; justify-content: space-between; max-width: 1296px; margin: 40px auto 14px; }
+.ds-section-title h2 { margin: 0; }
+.ds-section-title span { color: var(--color-text-tertiary); }
+.ds-elevation-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-24); max-width: 1296px; margin: 56px auto 48px; }
+.ds-elevation-grid article { min-height: 190px; padding: var(--space-24); border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-raised); }
+.ds-elevation-grid h2 { margin: 28px 0 8px; }
+.ds-elevation-grid p { min-height: 56px; margin: 0 0 16px; color: var(--color-text-secondary); }
+.ds-elevation-grid code { color: var(--color-text-tertiary); font: 10px/16px var(--type-family-data); }
+.ds-type-table td:nth-child(2) { min-width: 300px; }
+.ds-type-table td:nth-child(4) { min-width: 260px; }
+.ds-responsive-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-24); max-width: 1296px; margin: 32px auto; }
+.ds-responsive-cards article { padding: var(--space-20); border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-card); background: var(--color-surface-default); }
+.ds-layout-mini { display: flex; height: 120px; margin: 18px 0; overflow: hidden; border-radius: var(--radius-component-compact-control); background: var(--color-surface-canvas); }
+.ds-layout-mini i { flex: none; min-width: 30px; background: var(--color-sidebar-background); }
+.ds-layout-mini b { flex: 1; margin: 12px; border: var(--border-default) solid var(--color-border-default); border-radius: var(--radius-component-compact-control); background: var(--color-surface-default); }
+.ds-responsive-cards dl { display: grid; gap: 6px; margin: 0; }
+.ds-responsive-cards dl div { display: flex; justify-content: space-between; }
+.ds-responsive-cards dt { color: var(--color-text-secondary); font: 13px/18px var(--type-family-ui); }
+.ds-responsive-cards dd { margin: 0; color: var(--color-text-primary); font: 500 12.5px/18px var(--type-family-data); }
+.ds-focus-stage { display: flex; align-items: center; justify-content: center; gap: 48px; min-height: 220px; max-width: 1296px; margin: 0 auto 32px; border-radius: var(--radius-component-panel-and-table); background: var(--color-surface-subtle); }
+.ds-focus-stage input { width: 280px; height: var(--size-control-standard); padding: 0 var(--space-12); border: var(--border-default) solid var(--color-border-control); border-radius: var(--radius-component-field-and-button); background: var(--color-surface-default); color: var(--color-text-primary); font: 14px/20px var(--type-family-ui); }
+@media (max-width: 900px) { .ds-foundation-page { padding: 40px 20px 64px; } .ds-elevation-grid, .ds-responsive-cards { grid-template-columns: 1fr; } .ds-focus-stage { flex-direction: column; } }
