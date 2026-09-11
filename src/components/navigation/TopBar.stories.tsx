@@ -1,30 +1,37 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AppSelector, Breadcrumbs, Tabs, TopBar, type Role } from './Navigation';
-import '../story-layout.css';
+import { expect, within } from 'storybook/test';
+import { TopBar } from './Navigation';
 
-const applications = [{ id: 'bookings', name: 'Bookings', shortName: 'BK' }, { id: 'crm', name: 'Customer CRM', shortName: 'CR' }, { id: 'finance', name: 'Finance', shortName: 'FN' }];
-
-function InteractiveTopBar() {
-  const [search, setSearch] = useState('');
-  const [role, setRole] = useState<Role>('Admin');
-  return <TopBar onRoleChange={setRole} onSearchChange={setSearch} onSearchClear={() => setSearch('')} role={role} searchValue={search} user={{ name: 'Ananya Rao', initials: 'AR' }} />;
-}
-
-function ShellNavigation() {
-  const [application, setApplication] = useState('bookings');
-  const [tab, setTab] = useState('overview');
-  return <div style={{ minHeight: 420, background: 'var(--color-surface-canvas)' }}><div className="ds-shell-navigation"><AppSelector applications={applications} onChange={setApplication} selectedId={application} /><div className="ds-shell-navigation__topbar"><InteractiveTopBar /></div></div><main style={{ padding: 'var(--space-32)' }}><Breadcrumbs items={[{ label: 'Bookings', href: '#bookings' }, { label: 'BK-2026-000003' }]} /><h1 className="type-heading-page" style={{ margin: 'var(--space-16) 0 var(--space-24)' }}>XYZ Family · Dubai</h1><Tabs activeId={tab} ariaLabel="Booking sections" items={[{ id: 'overview', label: 'Overview' }, { id: 'travellers', label: 'Travellers' }, { id: 'finance', label: 'Finance', count: 1 }, { id: 'documents', label: 'Documents', count: 3 }]} onChange={setTab} /></main></div>;
-}
+const figmaSource = 'https://www.figma.com/design/2uayhHpYDyrue0XL4o2Zwt/PRD--Copy-?node-id=68-10';
 
 const meta = {
   title: 'Components/Navigation/Top bar',
   component: TopBar,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen', docs: { description: { component: 'Responsive 72px global header composed from Search, Role Switch, utility actions, and account controls. Compact mode hides role preview and contracts search.' } } },
+  parameters: {
+    layout: 'fullscreen',
+    docs: { description: { component: `Implementation contract: finalized Figma node [68:10](${figmaSource}). The desktop composition is 1268 × 72 with a 560px search, flexible spacer, 220px role switch, four 40px utility controls, and icon-only account control.` } },
+  },
 } satisfies Meta<typeof TopBar>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Desktop: Story = { args: { user: { name: 'Ananya Rao' } }, render: () => <InteractiveTopBar /> };
-export const WithoutSidebar: Story = { name: 'Application shell navigation', args: { user: { name: 'Ananya Rao' } }, render: () => <ShellNavigation /> };
+export const FinalizedDesktop: Story = {
+  name: 'Finalized desktop · Figma 68:10',
+  args: { role: 'Admin' },
+  parameters: { docs: { description: { story: `Source of truth: [open the finalized TopBar in Figma](${figmaSource}). This story intentionally excludes the sidebar and application selector.` } } },
+  render: (args) => <div style={{ width: 1268, maxWidth: 'none' }}><TopBar {...args} /></div>,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const topbar = canvasElement.querySelector<HTMLElement>('[data-figma-node="68:10"]');
+    const search = canvasElement.querySelector<HTMLElement>('[data-figma-node="67:28"]');
+    const role = canvas.getByRole('group', { name: 'Preview permission role' });
+    const utilities = ['Settings', 'Information', 'Contact support', 'Notifications, unread'];
+    await expect(topbar).toHaveStyle({ height: '72px', paddingLeft: '28px', paddingRight: '28px', columnGap: '20px' });
+    await expect(search).toHaveStyle({ width: '560px', height: '44px' });
+    await expect(canvas.getByRole('button', { name: 'Change search scope, currently Query' })).toHaveStyle({ height: '32px' });
+    await expect(role).toHaveStyle({ width: '220px', height: '40px' });
+    for (const name of utilities) await expect(canvas.getByRole('button', { name })).toHaveStyle({ width: '40px', height: '40px' });
+    await expect(canvas.getByRole('button', { name: 'Open account menu' })).toHaveStyle({ width: '58px', height: '40px' });
+  },
+};

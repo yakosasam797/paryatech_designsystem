@@ -1,7 +1,7 @@
 import {
   Bell, BookOpen, CalendarDays, Car, Check, ChevronDown, ChevronLeft, ChevronRight,
-  CircleDollarSign, CircleHelp, Clock3, Copy, Download, Ellipsis, EllipsisVertical,
-  ExternalLink, Eye, FileText, Hotel, Inbox, Landmark, LayoutDashboard, ListFilter,
+  CircleDollarSign, CircleHelp, CircleUserRound, Clock3, Copy, Download, Ellipsis, EllipsisVertical,
+  ExternalLink, Eye, FileText, Hotel, Inbox, Info, Landmark, LayoutDashboard, ListFilter,
   LogOut, MapPin, Megaphone, Menu, Package, Paperclip, Pencil, Phone, Plane, Plus, Receipt,
   RefreshCw, Route, Search, Send, Settings2, Ship, SlidersHorizontal, SquareCheckBig,
   Store, Trash2, Upload, User, UserRound, Users, WalletCards, X,
@@ -15,7 +15,7 @@ export const iconRegistry = {
   LayoutDashboard, Inbox, SquareCheckBig, Newspaper: FileText, FileText, Package,
   Megaphone, BookOpen, Users, User, UserRound, Store, Landmark, CircleDollarSign,
   WalletCards, Receipt, Plane, Hotel, MapPin, Route, Car, Ship, CalendarDays,
-  Clock3, Bell, CircleHelp, Phone, LogOut,
+  Clock3, Bell, CircleHelp, CircleUserRound, Info, Phone, LogOut,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof iconRegistry;

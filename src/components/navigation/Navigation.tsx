@@ -89,7 +89,7 @@ export function SearchField({ label, scope, scopeMenu = false, onScopeClick, onC
     <div className={`ds-search-field ${className}`.trim()}>
       <Icon name="Search" size="m" tone={disabled ? 'muted' : 'default'} />
       <input aria-label={label} disabled={disabled} type="search" value={value} {...props} />
-      {scope && (scopeMenu ? <button aria-label={`Change search scope, currently ${scope}`} className="ds-search-field__scope" onClick={onScopeClick} type="button">{scope}<Icon name="ChevronDown" size={13} tone="muted" /></button> : <span className="ds-search-field__scope">{scope}</span>)}
+      {scope && (scopeMenu ? <button aria-label={`Change search scope, currently ${scope}`} className="ds-search-field__scope" onClick={onScopeClick} type="button">{scope}<Icon name="ChevronDown" size="m" /></button> : <span className="ds-search-field__scope">{scope}</span>)}
       {populated && onClear && <button aria-label="Clear search" className="ds-search-field__clear" onClick={onClear} type="button"><Icon name="X" size={14} tone="muted" /></button>}
     </div>
   );
@@ -175,12 +175,12 @@ export function AppSelector({ applications, selectedId, onChange, label = 'Switc
 
 export type Role = 'Owner' | 'Admin' | 'Member';
 export function RoleSwitch({ active, onChange }: { active: Role; onChange?: (role: Role) => void }) {
-  return <div aria-label="Preview permission role" className="ds-role-switch" role="group">{(['Owner', 'Admin', 'Member'] as Role[]).map((role) => <button aria-pressed={role === active} key={role} onClick={() => onChange?.(role)} title={`Preview ${role} permissions`} type="button">{role}</button>)}</div>;
+  return <div aria-label="Preview permission role" className="ds-role-switch" data-figma-node="67:13" role="group">{(['Owner', 'Admin', 'Member'] as Role[]).map((role) => <button aria-pressed={role === active} key={role} onClick={() => onChange?.(role)} title={`Preview ${role} permissions`} type="button">{role}</button>)}</div>;
 }
 
 export type TopBarUtilityButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & { icon: IconName; label: string; notification?: boolean };
 export function TopBarUtilityButton({ icon, label, notification = false, className = '', ...props }: TopBarUtilityButtonProps) {
-  return <button aria-label={`${label}${notification ? ', unread' : ''}`} className={`ds-topbar-utility ${className}`.trim()} title={label} type="button" {...props}><Icon name={icon} size="l" />{notification && <span aria-hidden="true" className="ds-topbar-utility__notification" />}</button>;
+  return <button aria-label={`${label}${notification ? ', unread' : ''}`} className={`ds-topbar-utility ${className}`.trim()} data-figma-node="66:7" title={label} type="button" {...props}><Icon name={icon} size="m" />{notification && <span aria-hidden="true" className="ds-topbar-utility__notification" />}</button>;
 }
 
 export type TopBarProps = {
@@ -190,25 +190,29 @@ export type TopBarProps = {
   onScopeClick?: () => void;
   role?: Role;
   onRoleChange?: (role: Role) => void;
-  user: { name: string; initials?: string };
+  /** @deprecated Account identity is no longer visible in the finalized TopBar. Use accountLabel for its accessible name. */
+  user?: { name: string; initials?: string };
   actions?: Array<{ icon: IconName; label: string; notification?: boolean; onClick?: () => void }>;
+  accountLabel?: string;
   onAccountClick?: () => void;
 };
 
-export function TopBar({ searchValue = '', onSearchChange, onSearchClear, onScopeClick, role = 'Admin', onRoleChange, user, actions, onAccountClick }: TopBarProps) {
+export function TopBar({ searchValue = '', onSearchChange, onSearchClear, onScopeClick, role = 'Admin', onRoleChange, user, actions, accountLabel, onAccountClick }: TopBarProps) {
   const utilities = actions ?? [
-    { icon: 'SlidersHorizontal' as const, label: 'Preferences' },
-    { icon: 'CircleHelp' as const, label: 'Help' },
+    { icon: 'SlidersHorizontal' as const, label: 'Settings' },
+    { icon: 'Info' as const, label: 'Information' },
     { icon: 'Phone' as const, label: 'Contact support' },
     { icon: 'Bell' as const, label: 'Notifications', notification: true },
   ];
+  const resolvedAccountLabel = accountLabel ?? (user ? `Open account menu for ${user.name}` : 'Open account menu');
   return (
-    <header className="ds-topbar">
-      <div className="ds-topbar__search"><SearchField label="Search anything" onChange={(event) => onSearchChange?.(event.target.value)} onClear={onSearchClear} onScopeClick={onScopeClick} placeholder="Search anything" scope="Query" scopeMenu value={searchValue} /></div>
-      <div className="ds-topbar__actions">
-        <RoleSwitch active={role} onChange={onRoleChange} />
+    <header className="ds-topbar" data-figma-node="68:10">
+      <div className="ds-topbar__search" data-figma-node="67:28"><SearchField label="Search anything" onChange={(event) => onSearchChange?.(event.target.value)} onClear={onSearchClear} onScopeClick={onScopeClick} placeholder="Search anything" scope="Query" scopeMenu value={searchValue} /></div>
+      <span aria-hidden="true" className="ds-topbar__spacer" />
+      <RoleSwitch active={role} onChange={onRoleChange} />
+      <div className="ds-topbar__utilities">
         {utilities.map((action) => <TopBarUtilityButton key={action.label} {...action} />)}
-        <button aria-label={`Open account menu for ${user.name}`} className="ds-topbar__account" onClick={onAccountClick} type="button"><Avatar initials={user.initials} name={user.name} size={32} /><Icon name="ChevronDown" size={14} tone="muted" /></button>
+        <button aria-label={resolvedAccountLabel} className="ds-topbar__account" data-figma-node="68:57" onClick={onAccountClick} type="button"><Icon name="CircleUserRound" size="m" /><Icon name="ChevronDown" size="m" /></button>
       </div>
     </header>
   );
